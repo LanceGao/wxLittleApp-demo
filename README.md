@@ -1,2 +1,0 @@
-# wxLittleApp-demo
-a demo
