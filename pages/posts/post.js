@@ -3,6 +3,7 @@ Page({
     post_content: []
   },
   onLoad(options) {
+    console.log(options)
     //页面初始化 options为页面跳转所带的参数
     var post_content = [{
       date: "Sep 23 2018",
@@ -28,8 +29,8 @@ Page({
       }, {
         date: "Oct 21 2017",
         title: "儿时回忆",
-        post_img: "/images/post/sls.JPG",
-        author_img: "/images/avatar/6.png",
+        post_img: "/images/post/cat.png",
+        author_img: "/images/avatar/2.png",
         content: "Page(object)函数用来注册一个页面。接受一个object参数，其指定页面的初始数据、生命周期回调，事件处理函数等。",
         view_num: "52"
       }, {
