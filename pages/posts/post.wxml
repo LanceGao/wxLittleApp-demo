@@ -14,5 +14,7 @@
     </swiper>
 </view>
 <block wx:for="{{post_content}}" wx:key="{{item.title}}">
-  <template data="{{item}}" is="postItem" />
+  <view data-post-name="name" data-postId="{{item.postId}}" catchtap="goPostDetail">
+    <template data="{{item}}" is="postItem" />
+  </view>
 </block>

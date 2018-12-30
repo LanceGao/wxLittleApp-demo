@@ -1,4 +1,5 @@
 var postData = require('../../data/localData.js')
+// 获取App实例， 通过实例可以获取在全局定义的变量数据
 var app = getApp()
 
 Page({
@@ -11,6 +12,13 @@ Page({
     console.log(app.globalData.allData);
     this.setData({
       post_content: postData.postList
+    })
+  },
+  goPostDetail(event) {
+    var postId = event.currentTarget.dataset.postid;
+    console.log(postId)
+    wx.navigateTo({
+      url: 'post-detail/post-detail'
     })
   },
   onReady() {

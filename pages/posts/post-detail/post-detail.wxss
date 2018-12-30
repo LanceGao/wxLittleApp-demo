@@ -1,0 +1,91 @@
+/* pages/posts/post-detail/post-detail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.head-image {
+  width: 750rpx;
+  height: 460rpx;
+}
+
+.author-date {
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+}
+
+.avatar {
+  width: 90rpx;
+  height: 90rpx;
+  vertical-align: middle;
+}
+
+.author {
+  color: #666;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  vertical-align: middle;
+}
+
+.const-text {
+  color: #666;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  vertical-align: middle;
+}
+
+.date {
+  color: #666;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  vertical-align: middle;
+}
+
+.title {
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+  color: #4b556c;
+  font-size: 36rpx;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.tool {
+  margin-top: 20rpx;
+}
+
+.circle-img {
+  margin-right: 40rpx;
+  float: right;
+  vertical-align: middle;
+}
+
+.share-img {
+  margin-left: 30rpx;
+}
+
+.circle-img image {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.horizon {
+  width: 660rpx;
+  margin: 0 auto;
+  height: 1px;
+  background-color: #e5e5e5;
+  vertical-align: middle;
+  position: relative;
+  top: 46rpx;
+  z-index: -99;
+}
+
+.detail {
+  color: #666;
+  margin: 20rpx 30rpx;
+  letter-spacing: 2px;
+  line-height: 44rpx;
+  font-weight: 500;
+}
+
+
