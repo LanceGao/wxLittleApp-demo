@@ -1,4 +1,7 @@
 Page({
+  data: {
+    propA: '传入组件数据'
+  },
   goPosts() {
     // wx.navigateTo({
     //   url: "../posts/post?id=222"
@@ -7,6 +10,16 @@ Page({
       url: "../posts/post?id=2223"
     })
   },
+  showOrHide() {
+    console.log(this)
+    this.myDialog.hide()
+  },
+  cancelEvent() {
+    this.myDialog.hide()
+  },
+  confirmEvent() {
+    this.myDialog.hide()
+  },
   onLoad() {
     //页面初始化
     console.log('onload')
@@ -14,6 +27,8 @@ Page({
   onReady() {
     //页面渲染完成
     console.log('onready')
+    //
+    this.myDialog = this.selectComponent('#my-dialog')
   },
   onShow() {
     //页面显示

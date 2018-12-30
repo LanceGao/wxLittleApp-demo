@@ -4,4 +4,8 @@
   <view class="moto-container">
     <text class="moto" bindtap="goPosts">开启小程序之旅</text>
   </view>
+  <my-dialog prop-A="{{propA}}" id="my-dialog" bindcancelEvent="cancelEvent" bindconfirmEvent="confirmEvent"></my-dialog>
+  <view class="moto-container">
+    <text class="moto" bindtap="showOrHide">自定义组件dialog</text>
+  </view>
 </view>
