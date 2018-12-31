@@ -1,13 +1,14 @@
 <!--pages/posts/post-detail/post-detail.wxml-->
 <view class="container">
-  <image class="head-image" src="/images/post/bl.png"></image>
+  <image class="head-image" src="{{postDetailData.headImgSrc}}"></image>
+  <image class="audio" src="/images/music/music-start.png"></image>
   <view class="author-date">
-    <image class="avatar" src="/images/avatar/2.png"></image>
-    <text class="author">小白菜</text>
+    <image class="avatar" src="{{postDetailData.avatar}}"></image>
+    <text class="author">{{postDetailData.author}}</text>
     <text class="const-text">发表于</text>
-    <text class="date">三天前</text>
+    <text class="date">{{postDetailData.dateTime}}</text>
   </view>
-  <text class="title">哈哈，这是标题</text>
+  <text class="title">{{postDetailData.title}}</text>
   <view class="tool">
     <view class="circle-img">
       <image src="/images/icon/collection.png"></image>
@@ -15,5 +16,5 @@
     </view>
     <view class="horizon"></view>
   </view>
-  <text class="detail">微信小程序的页面有4种类型的文件（.js .json .wxml .wxss），微信客户端会先根据.json文件生成一个界面，顶部的颜色和文字都可以现在这个文件里定义好，然后微信客户端会装载这个页面的wxml结构和 wxss样式。最后客户端会装载.js文件。.js文件里的Page 是一个页面构造器，这个构造器生成了一个页面。在生成页面的时候，小程序框架会把data数据和 .wxml一起渲染出最终的结构，于是就得到了看到的小程序的样子。在渲染完界面后，页面实例会收到一个 onLoad 的回调，可以在这个回调函数里处理你的逻辑。</text>
+  <text class="detail">{{postDetailData.detail}}</text>
 </view>
