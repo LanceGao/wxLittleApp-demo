@@ -14,84 +14,115 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (option) {
+  onLoad: function(option) {
     var currentPostId = option.postId
     this.data.currentPostId = currentPostId
     var postDetailData = postData.postList[currentPostId]
     this.setData({
       postDetailData: postDetailData
     })
-
+    // 初始化获取是否收藏缓存信息，若缓存则显示收藏状态
     var postCollect = wx.getStorageSync('postCollect')
     if (postCollect) {
       if (postCollect[currentPostId]) {
         this.setData({
           isCollect: postCollect[currentPostId]
         })
-      } 
+      }
     } else {
       var postCollect = {}
       postCollect[currentPostId] = false
       wx.setStorageSync('postCollect', postCollect)
     }
   },
-
+  // 收藏功能实现
   onCollectionTap(event) {
     var currentPostId = this.data.currentPostId
     var postCollect = wx.getStorageSync('postCollect')
-    postCollect[currentPostId] = !postCollect[currentPostId]
-    wx.setStorageSync('postCollect', postCollect)
-    this.setData({
-      isCollect: postCollect[currentPostId]
+    // 调用显示模态对话框api
+    this.showModal(currentPostId, postCollect)
+  },
+
+  showModal(currentPostId, postCollect) {
+    var that = this
+    wx.showModal({
+      title: '收藏',
+      content: postCollect[currentPostId] ? '取消收藏?' : '是否收藏？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#666',
+      confirmText: '确定',
+      confirmColor: '#000',
+      success: function (res) {
+        if (res.confirm) {
+          // 对收藏操作进行缓存，调用数据缓存api
+          postCollect[currentPostId] = !postCollect[currentPostId]
+          wx.setStorageSync('postCollect', postCollect)
+          that.setData({
+            isCollect: postCollect[currentPostId]
+          })
+          //调用显示消息提示框api
+          that.showCancel(currentPostId, postCollect)
+        } else {
+          return
+        }
+      }
+    })
+  },
+  showCancel(currentPostId, postCollect) {
+    wx.showToast({
+      title: postCollect[currentPostId] ? '收藏成功！' : '取消成功！',
+      icon: 'none',
+      duration: 1000
     })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
