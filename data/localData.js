@@ -10,7 +10,12 @@ var localData = [{
   headImgSrc: "/images/post/crab.png",
   author: "小白菜",
   dateTime: "2天前",
-  detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）"
+  detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）",
+  music: {
+    title: '许巍-此时此刻',
+    url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+    coverImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+  }
 }, {
   date: "Sep 02 2017",
   title: "猫和老鼠",
@@ -23,7 +28,12 @@ var localData = [{
     headImgSrc: "/images/post/cat.png",
   author: "小家快乐",
   dateTime: "1天前",
-    detail: "如果在onLoad方法中，不是异步的对一个数据绑定，则不需要使用this.setData()方法，只需使用this.data. 赋值即可实现数据绑定"
+    detail: "如果在onLoad方法中，不是异步的对一个数据绑定，则不需要使用this.setData()方法，只需使用this.data. 赋值即可实现数据绑定",
+    music: {
+      title: '谭咏麟-朋友',
+      url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+      coverImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+    }
 }, {
   date: "Nov 28 2017",
   title: "比利.琳恩",
@@ -37,7 +47,12 @@ var localData = [{
   headImgSrc: "/images/post/bl.png",
     author: "琳恩",
   dateTime: "4天前",
-  detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）"
+    detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）",
+    music: {
+      title: '齐秦-夜夜夜夜',
+      url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+      coverImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+    }
 }, {
   date: "Oct 21 2017",
   title: "儿时回忆",
@@ -50,7 +65,12 @@ var localData = [{
     headImgSrc: "/images/post/sls.JPG",
   author: "白菜",
   dateTime: "2天前",
-  detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）"
+    detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）",
+    music: {
+      title: '李宗盛-鬼迷心窍',
+      url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+      coverImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+    }
 }, {
   date: "Sep 02 2017",
   title: "微信之父",
@@ -63,7 +83,12 @@ var localData = [{
     headImgSrc: "/images/post/xiaolong.jpg",
     author: "微信之父",
   dateTime: "2天前",
-  detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）"
+    detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）",
+    music: {
+      title: '老狼-恋恋风尘',
+      url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+      coverImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+    }
 }, {
   date: "Sep 02 2017",
   title: "体验vr",
@@ -76,7 +101,12 @@ var localData = [{
   headImgSrc: "/images/post/vr.png",
     author: "体验vr",
   dateTime: "1天前",
-  detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）"
+    detail: "data是页面第一次渲染使用的初始数据。页面加载时，data以JSON的形式由逻辑层传到渲染层，渲染层可以通过WXML对数据进行绑定。（data必须是可以转换成JSON的类型：字符串，数字，布尔值，数组，对象）",
+    music: {
+      title: '万晓利-女儿情',
+      url: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+      coverImg: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+    }
 }]
 
 module.exports = {

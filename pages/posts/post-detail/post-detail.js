@@ -8,7 +8,8 @@ Page({
   data: {
     postDetailData: {},
     currentPostId: '',
-    isCollect: false
+    isCollect: false,
+    isPlay: false
   },
 
   /**
@@ -38,6 +39,26 @@ Page({
   // 收藏功能实现
   onCollectionTap(event) {
     var currentPostId = this.data.currentPostId
+    // 异步获取收藏缓存数据
+    this.storageAync()
+    // 同步获取收藏缓存数据
+    // this.storageSync()
+  },
+
+  storageAync(currentPostId) {
+    var that = this
+    // var postCollect = wx.getStorageSync('postCollect')
+    wx.getStorage({
+      key: 'postCollect',
+      success(res) {
+        console.log(res)
+        // 调用显示模态对话框api
+        that.showModal(currentPostId, res.data)
+      }
+    }) 
+  },
+
+  storageSync(currentPostId) {
     var postCollect = wx.getStorageSync('postCollect')
     // 调用显示模态对话框api
     this.showModal(currentPostId, postCollect)
@@ -53,7 +74,7 @@ Page({
       cancelColor: '#666',
       confirmText: '确定',
       confirmColor: '#000',
-      success: function (res) {
+      success(res) {
         if (res.confirm) {
           // 对收藏操作进行缓存，调用数据缓存api
           postCollect[currentPostId] = !postCollect[currentPostId]
@@ -86,7 +107,7 @@ Page({
     wx.showActionSheet({
       itemList: itemShareList,
       itemColor: "#405f80",
-      success: function(res) {
+      success(res) {
         console.log(res)
         wx.showModal({
           title: '用户点击了' + itemShareList[res.tapIndex],
@@ -94,6 +115,27 @@ Page({
         })
       }
     })
+  },
+
+  // 实现音乐播放功能
+  onMusicPlayTap() {
+    var that = this
+    var isPlay = this.data.isPlay
+    if(isPlay) {
+      wx.pauseBackgroundAudio()
+      that.setData({
+        isPlay: false
+      })
+    } else {
+      wx.playBackgroundAudio({
+        dataUrl: that.data.postDetailData.music.url,
+        title: that.data.postDetailData.music.title,
+        coverImgUrl: that.data.postDetailData.music.coverImg
+      })
+      that.setData({
+        isPlay: true
+      })
+    }
   },
 
   /**
