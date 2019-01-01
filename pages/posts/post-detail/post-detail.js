@@ -16,8 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(option) {
-    var that = this
-    const backgroundAudioManager = wx.getBackgroundAudioManager()
     var currentPostId = option.postId
     this.data.currentPostId = currentPostId
     var postDetailData = postData.postList[currentPostId]
@@ -37,18 +35,6 @@ Page({
       postCollect[currentPostId] = false
       wx.setStorageSync('postCollect', postCollect)
     }
-    backgroundAudioManager.onPlay(function() {
-      console.log('play')
-      that.setData({
-        isPlay: true
-      })
-    })
-    backgroundAudioManager.onPause(function () {
-      console.log('play')
-      that.setData({
-        isPlay: false
-      })
-    })
   },
   // 收藏功能实现
   onCollectionTap(event) {
@@ -133,6 +119,7 @@ Page({
 
   // 实现音乐播放功能
   onMusicPlayTap() {
+    var that = this
     var isPlay = this.data.isPlay
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     if (isPlay) {
@@ -149,6 +136,19 @@ Page({
         isPlay: true
       })
     }
+
+    backgroundAudioManager.onPlay(function () {
+      console.log('play')
+      that.setData({
+        isPlay: true
+      })
+    })
+    backgroundAudioManager.onPause(function () {
+      console.log('play')
+      that.setData({
+        isPlay: false
+      })
+    })
   },
 
   /**
