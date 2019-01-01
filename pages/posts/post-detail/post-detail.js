@@ -1,7 +1,6 @@
 // pages/posts/post-detail/post-detail.js
 var postData = require('../../../data/localData.js')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -22,6 +21,7 @@ Page({
     this.setData({
       postDetailData: postDetailData
     })
+
     // 初始化获取是否收藏缓存信息，若缓存则显示收藏状态
     var postCollect = wx.getStorageSync('postCollect')
     if (postCollect) {
@@ -40,9 +40,9 @@ Page({
   onCollectionTap(event) {
     var currentPostId = this.data.currentPostId
     // 异步获取收藏缓存数据
-    this.storageAync()
+    this.storageAync(currentPostId)
     // 同步获取收藏缓存数据
-    // this.storageSync()
+    // this.storageSync(currentPostId)
   },
 
   storageAync(currentPostId) {
@@ -104,6 +104,7 @@ Page({
       "分享到新浪微博",
       "分享到QQ朋友"
     ]
+    // 显示分享操作菜单
     wx.showActionSheet({
       itemList: itemShareList,
       itemColor: "#405f80",
@@ -121,6 +122,7 @@ Page({
   onMusicPlayTap() {
     var that = this
     var isPlay = this.data.isPlay
+    // 获取全局的背景音频管理器
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     if (isPlay) {
       backgroundAudioManager.pause()
@@ -136,15 +138,14 @@ Page({
         isPlay: true
       })
     }
-
+    // 监听音乐播放，并同步
     backgroundAudioManager.onPlay(function () {
-      console.log('play')
       that.setData({
         isPlay: true
       })
     })
+    // 监听音乐暂停，并同步
     backgroundAudioManager.onPause(function () {
-      console.log('play')
       that.setData({
         isPlay: false
       })
@@ -198,7 +199,7 @@ Page({
    */
   onShareAppMessage: function() {
     return {
-      title: '瞎玩的哈'
+      title: '瞎玩的哈-测试'
     }
   }
 })
