@@ -16,6 +16,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(option) {
+    var that = this
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
     var currentPostId = option.postId
     this.data.currentPostId = currentPostId
     var postDetailData = postData.postList[currentPostId]
@@ -35,6 +37,18 @@ Page({
       postCollect[currentPostId] = false
       wx.setStorageSync('postCollect', postCollect)
     }
+    backgroundAudioManager.onPlay(function() {
+      console.log('play')
+      that.setData({
+        isPlay: true
+      })
+    })
+    backgroundAudioManager.onPause(function () {
+      console.log('play')
+      that.setData({
+        isPlay: false
+      })
+    })
   },
   // 收藏功能实现
   onCollectionTap(event) {
@@ -55,7 +69,7 @@ Page({
         // 调用显示模态对话框api
         that.showModal(currentPostId, res.data)
       }
-    }) 
+    })
   },
 
   storageSync(currentPostId) {
@@ -119,20 +133,19 @@ Page({
 
   // 实现音乐播放功能
   onMusicPlayTap() {
-    var that = this
     var isPlay = this.data.isPlay
-    if(isPlay) {
-      wx.pauseBackgroundAudio()
-      that.setData({
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    if (isPlay) {
+      backgroundAudioManager.pause()
+      this.setData({
         isPlay: false
       })
     } else {
-      wx.playBackgroundAudio({
-        dataUrl: that.data.postDetailData.music.url,
-        title: that.data.postDetailData.music.title,
-        coverImgUrl: that.data.postDetailData.music.coverImg
-      })
-      that.setData({
+      backgroundAudioManager.play()
+      backgroundAudioManager.src = this.data.postDetailData.music.url
+      backgroundAudioManager.title = this.data.postDetailData.music.title
+      backgroundAudioManager.coverImgUrl = this.data.postDetailData.music.coverImg
+      this.setData({
         isPlay: true
       })
     }

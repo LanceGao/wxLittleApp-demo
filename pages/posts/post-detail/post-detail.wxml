@@ -1,6 +1,6 @@
 <!--pages/posts/post-detail/post-detail.wxml-->
 <view class="container">
-  <image class="head-image" src="{{postDetailData.headImgSrc}}"></image>
+  <image class="head-image" src="{{isPlay?postDetailData.music.coverImg:postDetailData.headImgSrc}}"></image>
   <image class="audio" src="{{isPlay?'/images/music/music-stop.png':'/images/music/music-start.png'}}"  catchtap="onMusicPlayTap"></image>
   <!-- <image class="audio" src="/images/music/music-start.png"  catchtap="onMusicPlayTap" wx:else></image> -->
   <view class="author-date">
