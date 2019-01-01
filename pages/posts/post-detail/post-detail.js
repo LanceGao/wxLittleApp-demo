@@ -1,5 +1,7 @@
 // pages/posts/post-detail/post-detail.js
 var postData = require('../../../data/localData.js')
+var app = getApp()
+
 Page({
   /**
    * 页面的初始数据
@@ -15,6 +17,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(option) {
+    var that = this
+    // 获取全局的背景音频管理器
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
     var currentPostId = option.postId
     this.data.currentPostId = currentPostId
     var postDetailData = postData.postList[currentPostId]
@@ -35,6 +40,29 @@ Page({
       postCollect[currentPostId] = false
       wx.setStorageSync('postCollect', postCollect)
     }
+
+    // 通过获取全局的播放控制参数判断此页面是否处于播放
+    // 状态，若是则修改data里的播放控制参数并同步渲染层
+    if(app.globalData.g_isPlay) {
+      this.setData({
+        isPlay: true
+      })
+    }
+    
+    // 监听音乐播放，并同步
+    backgroundAudioManager.onPlay(function () {
+      that.setData({
+        isPlay: true
+      })
+      app.globalData.g_isPlay = true //同步全局的播放控制参数
+    })
+    // 监听音乐暂停，并同步
+    backgroundAudioManager.onPause(function () {
+      that.setData({
+        isPlay: false
+      })
+      app.globalData.g_isPlay = false //同步全局的播放控制参数
+    })
   },
   // 收藏功能实现
   onCollectionTap(event) {
@@ -138,18 +166,6 @@ Page({
         isPlay: true
       })
     }
-    // 监听音乐播放，并同步
-    backgroundAudioManager.onPlay(function () {
-      that.setData({
-        isPlay: true
-      })
-    })
-    // 监听音乐暂停，并同步
-    backgroundAudioManager.onPause(function () {
-      that.setData({
-        isPlay: false
-      })
-    })
   },
 
   /**

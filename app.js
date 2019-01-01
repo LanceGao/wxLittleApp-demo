@@ -29,6 +29,7 @@ App({
   },
   // 定义全局变量
   globalData: {
-    allData: 'hello littleApp'
+    allData: 'hello littleApp',
+    g_isPlay: false
   }
 })
