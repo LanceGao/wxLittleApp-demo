@@ -62,18 +62,37 @@ Page({
             isCollect: postCollect[currentPostId]
           })
           //调用显示消息提示框api
-          that.showCancel(currentPostId, postCollect)
+          that.showToast(currentPostId, postCollect)
         } else {
           return
         }
       }
     })
   },
-  showCancel(currentPostId, postCollect) {
+  showToast(currentPostId, postCollect) {
     wx.showToast({
       title: postCollect[currentPostId] ? '收藏成功！' : '取消成功！',
       icon: 'none',
       duration: 1000
+    })
+  },
+
+  onShareTap(event) {
+    var itemShareList = [
+      "分享到微信朋友",
+      "分享到新浪微博",
+      "分享到QQ朋友"
+    ]
+    wx.showActionSheet({
+      itemList: itemShareList,
+      itemColor: "#405f80",
+      success: function(res) {
+        console.log(res)
+        wx.showModal({
+          title: '用户点击了' + itemShareList[res.tapIndex],
+          content: '用户想分享到' + itemShareList[res.tapIndex]
+        })
+      }
     })
   },
 
@@ -123,6 +142,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '瞎玩的哈'
+    }
   }
 })
