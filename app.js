@@ -30,6 +30,7 @@ App({
   // 定义全局变量
   globalData: {
     allData: 'hello littleApp',
-    g_isPlay: false
+    g_isPlay: false,
+    g_currentMusicPostId: null
   }
 })

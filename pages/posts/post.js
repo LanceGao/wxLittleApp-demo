@@ -15,7 +15,7 @@ Page({
     })
   },
   goPostDetail(event) {
-    var postId = event.currentTarget.dataset.postid;
+    var postId = event.target.dataset.postid ? event.target.dataset.postid : event.currentTarget.dataset.postid
     console.log(postId)
     wx.navigateTo({
       url: 'post-detail/post-detail?postId=' + postId

@@ -43,7 +43,7 @@ Page({
 
     // 通过获取全局的播放控制参数判断此页面是否处于播放
     // 状态，若是则修改data里的播放控制参数并同步渲染层
-    if(app.globalData.g_isPlay) {
+    if (app.globalData.g_isPlay && app.globalData.g_currentMusicPostId === currentPostId) {
       this.setData({
         isPlay: true
       })
@@ -55,6 +55,7 @@ Page({
         isPlay: true
       })
       app.globalData.g_isPlay = true //同步全局的播放控制参数
+      app.globalData.g_currentMusicPostId = that.data.currentPostId
     })
     // 监听音乐暂停，并同步
     backgroundAudioManager.onPause(function () {
@@ -62,6 +63,7 @@ Page({
         isPlay: false
       })
       app.globalData.g_isPlay = false //同步全局的播放控制参数
+      app.globalData.g_currentMusicPostId = null 
     })
   },
   // 收藏功能实现
