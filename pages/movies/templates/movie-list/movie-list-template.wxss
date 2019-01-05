@@ -1,0 +1,48 @@
+/* pages/movies/templates/movie-list/movie-list-template.wxss */
+@import "../movie/movie-template.wxss";
+
+.movie-list-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 30rpx solid rgba(189, 185, 189, 0.8);
+}
+
+.inner-container {
+  margin: 0 auto 20rpx;
+}
+
+.movie-list-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 40rpx;
+  padding: 30rpx 20rpx;
+  line-height: 40rpx;
+}
+
+.movie-list-left {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.movie-list-right {
+  /* float: right; */
+  display: flex;
+  flex-direction: row;
+}
+
+.movie-list-more {
+  color: #405f80;
+  font-size: 30rpx;
+}
+
+.movie-list-img {
+  width: 12rpx;
+  height: 23rpx;
+  margin: 10rpx 14rpx 0 12rpx;
+}
+
+.movies-container {
+  display: flex;
+  flex-direction: row;
+}

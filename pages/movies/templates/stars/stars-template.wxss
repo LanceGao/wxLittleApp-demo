@@ -1,0 +1,21 @@
+/* pages/movies/templates/starts/starts-template.wxss */
+.star-container {
+  display: flex;
+  flex-direction: row;
+}
+.star-list {
+  display: flex;
+  flex-direction: row;
+  height: 17rpx;
+  margin-right: 24rpx;
+  vertical-align: middle;
+  margin-top: 6rpx;
+}
+.star-list image {
+  width: 17rpx;
+  height: 17rpx;
+  padding-left: 3rpx;
+}
+.score {
+  color: #1f3463;
+}

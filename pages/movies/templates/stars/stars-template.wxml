@@ -1,0 +1,13 @@
+<!--pages/movies/templates/stars/stars-template.wxml-->
+<template name="starsTemp">
+  <view class="star-container">
+    <view class="star-list">
+      <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image>
+    </view>
+    <text class="score">8.2</text>
+  </view>
+</template>

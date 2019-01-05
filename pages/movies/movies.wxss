@@ -1,0 +1,6 @@
+/* pages/movies/movies.wxss */
+@import "templates/movie-list/movie-list-template.wxss";
+
+/* .container {
+  background: rgba(189, 185, 189, 0.8);
+} */

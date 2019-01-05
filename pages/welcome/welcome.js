@@ -3,12 +3,12 @@ Page({
     propA: '传入组件数据'
   },
   goPosts() {
-    wx.navigateTo({
-      url: "../posts/post?id=222"
-    })
-    // wx.redirectTo({
-    //   url: "../posts/post?id=2223"
+    // wx.navigateTo({
+    //   url: "../posts/post?id=222"
     // })
+    wx.reLaunch({
+      url: "../posts/post?id=2223"
+    })
   },
   showOrHide() {
     console.log(this)
