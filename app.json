@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/movies/movies",
     "pages/welcome/welcome",
     "pages/posts/post",
-    "pages/posts/post-detail/post-detail"
+    "pages/posts/post-detail/post-detail",
+    "pages/movies/movies"
   ],
   "window": {
     "backgroundColor": "#b3d4db",

@@ -1,9 +1,9 @@
 <!--pages/movies/templates/movie/movie-template.wxml-->
 <import src="../stars/stars-template.wxml" />
 <template name="movieTemp">
-  <view class="movie-container">
-    <image class="movie-img" src="/images/hh.jpg"></image>
-    <text class="movie-name">你的名字</text>
-    <template is="starsTemp" />
+  <view class="movie-container" data-movieId="{{movieId}}">
+    <image class="movie-img" src="{{movieCoverImg}}"></image>
+    <text class="movie-name">{{title}}</text>
+    <template is="starsTemp" data="{{movieScore}}" />
   </view>
 </template>

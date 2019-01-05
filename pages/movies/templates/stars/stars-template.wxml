@@ -8,6 +8,6 @@
       <image src="/images/icon/star.png"></image>
       <image src="/images/icon/star.png"></image>
     </view>
-    <text class="score">8.2</text>
+    <text class="score">{{movieScore}}</text>
   </view>
 </template>

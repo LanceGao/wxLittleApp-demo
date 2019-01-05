@@ -1,19 +1,19 @@
 <!--pages/movies/templates/movie-list/movie-list-template.wxml-->
 <import src="../movie/movie-template.wxml" />
 <template name="movieListTemp">
-  <view class="movie-list-container">
+  <view class="movie-list-container" wx:for="{{movieItem}}" wx:key="{{index}}">
     <view class="inner-container">
       <view class="movie-list-title">
-        <text class="movie-list-left">正在热映</text>
+        <text class="movie-list-left">{{item}}</text>
         <view class="movie-list-right">
           <text class="movie-list-more">更多</text>
           <image class="movie-list-img" src="/images/icon/arrow-right.png"></image>
         </view>
       </view>
       <view class="movies-container">
-        <template is="movieTemp" />
-        <template is="movieTemp" />
-        <template is="movieTemp" />
+        <block wx:for="{{movieInfoList}}" wx:key="{{item.id}}">
+          <template is="movieTemp" data="{{...item}}"/>
+        </block>
       </view>
     </view>
   </view>

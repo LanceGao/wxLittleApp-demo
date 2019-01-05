@@ -31,6 +31,7 @@ App({
   globalData: {
     allData: 'hello littleApp',
     g_isPlay: false,
-    g_currentMusicPostId: null
+    g_currentMusicPostId: null,
+    doubanBaseUrl: "http://t.yushu.im"
   }
 })
