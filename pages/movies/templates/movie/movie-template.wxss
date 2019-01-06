@@ -17,4 +17,7 @@
   color: #707070;
   margin-bottom: 16rpx;
   margin-top: 20rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

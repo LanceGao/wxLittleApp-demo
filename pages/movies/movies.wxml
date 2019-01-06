@@ -1,5 +1,7 @@
 <!--pages/movies/movies.wxml-->
 <import src="templates/movie-list/movie-list-template.wxml" />
 <view class="container">
-  <template is="movieListTemp" data="{{movieItem, movieInfoList}}" />
-</view>
+    <template is="movieListTemp" data="{{...inTheaters}}" />
+    <template is="movieListTemp" data="{{...comingSoon}}" />
+    <template is="movieListTemp" data="{{...top250}}" />
+  </view>

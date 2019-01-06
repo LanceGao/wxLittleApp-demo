@@ -2,11 +2,7 @@
 <template name="starsTemp">
   <view class="star-container">
     <view class="star-list">
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
-      <image src="/images/icon/star.png"></image>
+      <image wx:for="{{movieStar}}" wx:key="{{index}}" src="{{item}}"></image>
     </view>
     <text class="score">{{movieScore}}</text>
   </view>

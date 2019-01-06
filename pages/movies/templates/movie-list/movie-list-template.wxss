@@ -26,7 +26,6 @@
 }
 
 .movie-list-right {
-  /* float: right; */
   display: flex;
   flex-direction: row;
 }
