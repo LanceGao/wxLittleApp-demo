@@ -5,7 +5,7 @@
      <view class="inner-container">
       <view class="movie-list-title">
         <text class="movie-list-left">{{movieType}}</text>
-        <view class="movie-list-right">
+        <view class="movie-list-right" data-movieType="{{movieType}}" catchtap="goMoreMovie">
           <text class="movie-list-more">更多</text>
           <image class="movie-list-img" src="/images/icon/arrow-right.png"></image>
         </view>

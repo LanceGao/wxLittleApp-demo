@@ -40,7 +40,7 @@ Page({
   },
   // 对获取的电影数据进行处理
   processData(data, settedKey) {
-    var arr = []
+    var movieArr = []
     var movieInfo = {}
     var type
     // 星星图片路径
@@ -48,26 +48,20 @@ Page({
     var movieHalfStar = '/images/icon/star_half.png'
     var movieGreyStar = '/images/icon/none-star.png'
     for (var idx in data.subjects) {
-      var result = []
       var subject = data.subjects[idx]
       var title = subject.title
       if(title.length >= 6) {
         title = title.substring(0, 6) + '...'
       }
       // 提取页面要使用的数据
-      var movieCoverImg = subject.images.large
-      var movieScore = subject.rating.average
-      var movieId = subject.id
-      var movieStar = utils.movieRatingScore(subject.rating.stars, movieAllStar, movieHalfStar, movieGreyStar)
-
       var temp = {
         title: title,
-        movieCoverImg: movieCoverImg,
-        movieId: movieId,
-        movieScore: movieScore,
-        movieStar: movieStar
+        movieCoverImg: subject.images.large,
+        movieId: subject.id,
+        movieScore: subject.rating.average,
+        movieStar: utils.movieRatingScore(subject.rating.stars, movieAllStar, movieHalfStar, movieGreyStar)
       }
-      arr.push(temp)
+      movieArr.push(temp)
     }
     // 根据请求的电影类进行数据映射
     switch (settedKey) {
@@ -81,12 +75,19 @@ Page({
         type = '豆瓣top250';
         break;
     }
-    // 根据请求的电影类型动态绑定属性
+    // 根据请求的电影类型 动态绑定属性
     movieInfo[settedKey] = {
-      movies: arr,
+      movies: movieArr,
       movieType: type
     }
-    console.log('movieInfo', movieInfo)
     this.setData(movieInfo)
+  },
+  // 跳转更多电影页面
+  goMoreMovie(event) {
+    var movieType = event.currentTarget.dataset.movietype
+    console.log('movieType', movieType)
+    wx.navigateTo({
+      url: 'movie-more/movie-more?movieType=' + movieType
+    })
   }
 })

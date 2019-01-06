@@ -15,7 +15,24 @@ function movieRatingScore(stars, movieAllStar, movieHalfStar, movieGreyStar) {
   }
   return result
 }
+// 请求电影列表
+function getMovieData(url, callback) {
+  wx.request({
+    url: url,
+    data: {},
+    header: {
+      'Content-Type': 'application/xml'
+    },
+    success(res) {
+      callback(res.data)
+    },
+    fail(err) {
+      
+    }
+  })
+}
 
 module.exports = {
-  movieRatingScore: movieRatingScore
+  movieRatingScore: movieRatingScore,
+  getMovieData: getMovieData
 }
