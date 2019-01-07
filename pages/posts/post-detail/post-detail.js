@@ -144,6 +144,9 @@ Page({
           title: '用户点击了' + itemShareList[res.tapIndex],
           content: '用户想分享到' + itemShareList[res.tapIndex]
         })
+      },
+      fail(err) {
+        console.log('actionsheet', err.errMsg)
       }
     })
   },

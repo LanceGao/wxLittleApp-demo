@@ -14,32 +14,14 @@ Page({
     var inTheatersUrl = baseUrl + '/v2/movie/in_theaters' + '?count=3'
     var comingSoonUrl = baseUrl + '/v2/movie/coming_soon' + '?count=3'
     var top250Url = baseUrl + '/v2/movie/top250' + '?count=3'
-    //数据请求
-    this.getMovieListData(inTheatersUrl, 'inTheaters')
-    this.getMovieListData(comingSoonUrl, 'comingSoon')
-    this.getMovieListData(top250Url, 'top250')
-  },
-  // 获取电影数据
-  getMovieListData(url, settedKey) {
-    var that = this
-    wx.request({
-      url: url,
-      method: 'GET',
-      header: {
-        "Content-Type": "application/json"
-      },
-      success(res) {
-        console.log('success', res)
-        // 对获取的电影数据进行处理
-        that.processData(res.data, settedKey)
-      },
-      fail(err) {
-        console.log('err', err)
-      }
-    })
+    //请求电影列表数据
+    utils.getMovieData(inTheatersUrl, this.processData, 'inTheaters')
+    utils.getMovieData(comingSoonUrl, this.processData, 'comingSoon')
+    utils.getMovieData(top250Url, this.processData, 'top250')
   },
   // 对获取的电影数据进行处理
   processData(data, settedKey) {
+    console.log('data', data)
     var movieArr = []
     var movieInfo = {}
     var type

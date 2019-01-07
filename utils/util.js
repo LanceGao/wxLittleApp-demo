@@ -1,9 +1,15 @@
-// 星星评分实现
+/**
+ * 星星评分实现
+ * stars  分数
+ * movieAllStar   全星图片路径
+ * movieHalfStar  半星图片路径
+ * movieGreyStar  灰星图片路径
+ */
 function movieRatingScore(stars, movieAllStar, movieHalfStar, movieGreyStar) {
   var result = []
-  var stars = Math.floor(stars/10 * 2)/2
+  var stars = Math.floor(stars / 10 * 2) / 2
   var score = Math.floor(stars)
-  var half = stars/1 !== 0
+  var half = stars / 1 !== 0
   for (var i = 0; i < score; i++) {
     result.push(movieAllStar)
   }
@@ -15,8 +21,14 @@ function movieRatingScore(stars, movieAllStar, movieHalfStar, movieGreyStar) {
   }
   return result
 }
-// 请求电影列表
-function getMovieData(url, callback) {
+
+/**
+ * 请求电影列表
+ * url  请求url
+ * callback   回调函数
+ * settedKey  请求url的type
+ */
+function getMovieData(url, callback, settedKey) {
   wx.request({
     url: url,
     data: {},
@@ -24,10 +36,10 @@ function getMovieData(url, callback) {
       'Content-Type': 'application/xml'
     },
     success(res) {
-      callback(res.data)
+      callback(res.data, settedKey)
     },
     fail(err) {
-      
+
     }
   })
 }
