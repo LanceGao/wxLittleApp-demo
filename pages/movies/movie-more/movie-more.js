@@ -8,7 +8,10 @@ Page({
    */
   data: {
     navigateBarTitle: '', //导航栏title
-    movies: []
+    movies: [],
+    requestUrl: '',
+    totalCount: 0,
+    isEmpty: true
   },
 
   /**
@@ -34,13 +37,27 @@ Page({
         url = baseUrl + '/v2/movie/top250';
         break;
     }
+    // 因为不涉及视图层的渲染，可以使用this.data.来改变值
+    this.data.requestUrl = url
+    // this.setData({
+    //   requestUrl: url
+    // })
     // 请求电影列表
     utils.getMovieData(url, this.processData)
   },
   // 对返回的电影列表进行处理
   processData(data) {
     console.log('data', data)
+    if (data.subjects.length == 0) {
+      console.log('没有更多了！')
+      wx.showToast({
+        title: '没有更多了！',
+        icon: 'none'
+      })
+      return
+    }
     var movieArr = []
+    var totalMovies = {}
     // 星星图片路径
     var movieAllStar = '/images/icon/star.png'
     var movieHalfStar = '/images/icon/star_half.png'
@@ -61,10 +78,23 @@ Page({
       }
       movieArr.push(temp)
     }
+    if(this.data.isEmpty) {
+      totalMovies = movieArr
+      this.data.isEmpty = false
+    } else {
+      totalMovies = this.data.movies.concat(movieArr)
+    }
     this.setData({
-      movies: movieArr
+      movies: totalMovies
     })
+
+    this.data.totalCount += 20
     console.log('movies', this.data.movies)
+  },
+
+  crollToLower(event) {
+    var nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20'
+    utils.getMovieData(nextUrl, this.processData)
   },
 
   /**
