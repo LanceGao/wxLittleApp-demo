@@ -67,7 +67,6 @@ Page({
   // 跳转更多电影页面
   goMoreMovie(event) {
     var movieType = event.currentTarget.dataset.movietype
-    console.log('movieType', movieType)
     wx.navigateTo({
       url: 'movie-more/movie-more?movieType=' + movieType
     })

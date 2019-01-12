@@ -7,7 +7,7 @@
     "pages/movies/movie-more/movie-more"
   ],
   "window": {
-    "backgroundColor": "#b3d4db",
+    "backgroundColor": "#fff",
     "navigationBarBackgroundColor": "#405f80"
   },
   "tabBar": {

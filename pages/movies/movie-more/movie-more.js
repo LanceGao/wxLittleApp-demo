@@ -17,7 +17,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log(options.movieType)
     var url = ''
     var baseUrl = app.globalData.doubanBaseUrl
@@ -26,7 +26,7 @@ Page({
       navigateBarTitle: movieType
     })
     // 根据电影类型配置请求url
-    switch(movieType) {
+    switch (movieType) {
       case '正在热映':
         url = baseUrl + '/v2/movie/in_theaters';
         break;
@@ -49,7 +49,6 @@ Page({
   processData(data) {
     console.log('data', data)
     if (data.subjects.length == 0) {
-      console.log('没有更多了！')
       wx.showToast({
         title: '没有更多了！',
         icon: 'none'
@@ -78,7 +77,7 @@ Page({
       }
       movieArr.push(temp)
     }
-    if(this.data.isEmpty) {
+    if (this.data.isEmpty) {
       totalMovies = movieArr
       this.data.isEmpty = false
     } else {
@@ -89,18 +88,38 @@ Page({
     })
 
     this.data.totalCount += 20
+    wx.hideLoading()
     console.log('movies', this.data.movies)
   },
 
-  crollToLower(event) {
-    var nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20'
-    utils.getMovieData(nextUrl, this.processData)
-  },
+  // 上拉加载更多
+  // scrollToLower(event) {
+  //   console.log('onReachBottom')
+  //   var nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20'
+  //   wx.showLoading({
+  //     title: '加载中...'
+  //   })
+  //   utils.getMovieData(nextUrl, this.processData)
+  // },
+
+  // scrollRefresh(event) {
+  //   console.log('99999')
+  //   var refreshUrl = this.data.requestUrl + '?start=0&count=20'
+  //   this.setData({
+  //     isEmpty: true,
+  //     movies: [],
+  //     totalCount: 0
+  //   })
+  //   utils.getMovieData(refreshUrl, this.processData)
+  //   wx.showLoading({
+  //     title: '加载中...'
+  //   })
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     // 设置导航栏
     //这里导航栏没在onLoad生命周期函数里设置
     //因为对界面内容进行设置的api要在onReady后进行
@@ -114,42 +133,55 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: function() {
+    var refreshUrl = this.data.requestUrl + '?start=0&count=20'
+    this.setData({
+      isEmpty: true,
+      movies: [],
+      totalCount: 0
+    })
+    wx.showLoading({
+      title: '加载中...'
+    })
+    utils.getMovieData(refreshUrl, this.processData)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: function() {
+    var nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20'
+    wx.showLoading({
+      title: '加载中...'
+    })
+    utils.getMovieData(nextUrl, this.processData)
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
