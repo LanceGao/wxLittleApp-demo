@@ -5,7 +5,9 @@ Page({
   data: {
     inTheaters: {},
     comingSoon: {},
-    top250: {}
+    top250: {},
+    containerShow: true,
+    searchPanelShow: false
   },
   onLoad() {
     // 豆瓣baseUrl
@@ -69,6 +71,20 @@ Page({
     var movieType = event.currentTarget.dataset.movietype
     wx.navigateTo({
       url: 'movie-more/movie-more?movieType=' + movieType
+    })
+  },
+  //点击搜索
+  onBindFocus(event) {
+    this.setData({
+      containerShow: false,
+      searchPanelShow: true
+    })
+  },
+  searchClose(event) {
+    console.log('show')
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false
     })
   }
 })

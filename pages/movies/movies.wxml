@@ -1,7 +1,17 @@
 <!--pages/movies/movies.wxml-->
 <import src="templates/movie-list/movie-list-template.wxml" />
-<view class="container">
-    <template is="movieListTemp" data="{{...inTheaters}}" />
-    <template is="movieListTemp" data="{{...comingSoon}}" />
-    <template is="movieListTemp" data="{{...top250}}" />
-  </view>
+<import src="templates/movie-grid/movie-grid-template.wxml" />
+<view class="search">
+  <icon class="search-img" type="search" size="16px" color="#405f80"></icon>
+  <input type="text" placeholder="电视里看见" placeholder-class="placeholder" bindfocus="onBindFocus"></input>
+  <icon class="search-close" color="#405f80" type="cancel" size="20px" color="#405f80" wx:if="{{searchPanelShow}}" bindtap="searchClose"></icon>
+</view>
+<view class="container"  wx:if="{{containerShow}}">
+  <template is="movieListTemp" data="{{...inTheaters}}" />
+  <template is="movieListTemp" data="{{...comingSoon}}" />
+  <template is="movieListTemp" data="{{...top250}}" />
+</view>
+<view class="search-panel" wx:if="{{searchPanelShow}}">
+  <template is="movieGrid" />
+  <text>杜拉斯可减肥</text>
+</view> 
