@@ -1,9 +1,10 @@
 <!--pages/movies/movies.wxml-->
 <import src="templates/movie-list/movie-list-template.wxml" />
 <import src="templates/movie-grid/movie-grid-template.wxml" />
+
 <view class="search">
   <icon class="search-img" type="search" size="16px" color="#405f80"></icon>
-  <input type="text" placeholder="电视里看见" placeholder-class="placeholder" bindfocus="onBindFocus"></input>
+  <input type="text" value="{{inputData}}" placeholder="请输入要搜索的电影" placeholder-class="placeholder" bindfocus="onBindFocus" bindconfirm="onBindConfirm"></input>
   <icon class="search-close" color="#405f80" type="cancel" size="20px" color="#405f80" wx:if="{{searchPanelShow}}" bindtap="searchClose"></icon>
 </view>
 <view class="container"  wx:if="{{containerShow}}">
@@ -12,6 +13,8 @@
   <template is="movieListTemp" data="{{...top250}}" />
 </view>
 <view class="search-panel" wx:if="{{searchPanelShow}}">
-  <template is="movieGrid" />
-  <text>杜拉斯可减肥</text>
+  <text class="no-result" wx:if="{{searchResult.movies.length === 0}}">无结果，稍后再试!</text>
+  <view wx:else>
+    <template is="movieGrid" data="{{...searchResult}}" />
+  </view>
 </view> 

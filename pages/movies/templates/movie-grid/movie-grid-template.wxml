@@ -3,7 +3,7 @@
   <!-- <scroll-view class="grid-container" scroll-y="true" scroll-x="false" bindscrolltolower="scrollToLower" 
   bindscrolltoupper="scrollRefresh" enable-back-to-top="true"> -->
   <view class="grid-container">
-    <block wx:for="{{movies}}">
+    <block wx:for="{{movies}}" wx:key="{{index}}">
       <view class="single-movie-contianer">
         <template is="movieTemp" data="{{...item}}" />
       </view>

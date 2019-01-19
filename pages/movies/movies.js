@@ -6,8 +6,10 @@ Page({
     inTheaters: {},
     comingSoon: {},
     top250: {},
+    searchResult: {},
     containerShow: true,
-    searchPanelShow: false
+    searchPanelShow: false,
+    inputData: ''
   },
   onLoad() {
     // 豆瓣baseUrl
@@ -80,11 +82,21 @@ Page({
       searchPanelShow: true
     })
   },
+  // 搜索电影
+  onBindConfirm(event) {
+    var text = event.detail.value
+    var searchUrl = app.globalData.doubanBaseUrl + '/v2/movie/search?q=' + text
+    utils.getMovieData(searchUrl, this.processData, 'searchResult')
+  },
+
+  // 关闭搜索
   searchClose(event) {
     console.log('show')
     this.setData({
       containerShow: true,
-      searchPanelShow: false
+      searchPanelShow: false,
+      searchResult: {},
+      inputData: '' //关闭搜索结果后把搜索按钮内容清空
     })
   }
 })
